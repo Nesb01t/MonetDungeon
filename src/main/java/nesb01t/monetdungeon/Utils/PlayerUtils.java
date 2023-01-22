@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 
 public class PlayerUtils {
     public static Block getBlockUnderPlayer(Player player) {
@@ -19,5 +20,9 @@ public class PlayerUtils {
         Block block = playerLoc.getWorld().getBlockAt(playerLoc);
         player.sendMessage(block.getType().toString());
         return block.getType() == Material.OBSIDIAN;
+    }
+
+    public static boolean isViewingGUI(Player player) {
+        return player.getOpenInventory().getType() == InventoryType.CHEST;
     }
 }
