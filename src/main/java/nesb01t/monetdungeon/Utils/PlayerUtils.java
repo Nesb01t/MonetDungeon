@@ -17,6 +17,7 @@ public class PlayerUtils {
         Location playerLoc = player.getLocation();
         playerLoc.setY(playerLoc.getY() - 0.01D);
         Block block = playerLoc.getWorld().getBlockAt(playerLoc);
+        player.sendMessage(block.getType().toString());
         return block.getType() == Material.OBSIDIAN;
     }
 }

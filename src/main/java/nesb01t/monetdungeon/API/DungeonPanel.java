@@ -13,13 +13,16 @@ public class DungeonPanel {
     public static List<Player> cooldownPlayerList;
 
     public static void openDungeonPanel(Player player) {
+        player.sendMessage("opening");
         if (!isCooldown(player)) {
+            player.sendMessage("isnot cooldown");
             DungeonPanel.cooldownPlayerList.add(player);
             BukkitScheduler scheduler = Bukkit.getScheduler();
             scheduler.scheduleSyncDelayedTask(plugin, new Runnable() {
                 @Override
                 public void run() {
                     DungeonPanel.cooldownPlayerList.remove(player);
+                    player.sendMessage("cooldown finish");
                 }
             }, 10L);
 
