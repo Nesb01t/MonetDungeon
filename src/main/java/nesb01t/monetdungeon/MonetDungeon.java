@@ -14,6 +14,7 @@ public final class MonetDungeon extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        saveDefaultConfig();
         easyRegEvent(new PortalListener());
         easyRegCom(new LocationCom(), "modun");
     }

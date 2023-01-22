@@ -22,5 +22,4 @@ public class MapBlock {
         String mapBlockStr = "地图区块: " + String.valueOf(BlockX) + ", " + String.valueOf(BlockZ);
         player.sendMessage(mapBlockStr);
     }
-
 }

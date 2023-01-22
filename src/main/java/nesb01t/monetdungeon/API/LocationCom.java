@@ -31,8 +31,8 @@ public class LocationCom implements CommandExecutor {
             case "save":
                 /**
                  * 参数依次为:
-                 *  - 区块 0~N
-                 *  - 层级 1~3
+                 *  区块 -> 0~N
+                 *  层级 -> 1~3
                  */
                 if (args.length == 2) {
                     try {
@@ -52,8 +52,14 @@ public class LocationCom implements CommandExecutor {
      */
     private void saveLocationToFile(Player player, String blockX, String level) throws IOException {
         YamlConfiguration yaml = useYamlFile(blockX);
+        ConfigurationSection list;
 
-        ConfigurationSection list = yaml.getConfigurationSection(level);
+        if (yaml.isConfigurationSection(level)) { // 存在列表
+            list = yaml.getConfigurationSection(level);
+        } else { // 不存在列表
+            list = yaml.createSection(level);
+        }
+
         list.set(String.valueOf(list.getKeys(false).size()), player.getLocation());
 
         saveYamlToFile(blockX, yaml);
