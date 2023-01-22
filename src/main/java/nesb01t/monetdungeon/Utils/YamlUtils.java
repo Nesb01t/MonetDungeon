@@ -15,4 +15,10 @@ public class YamlUtils {
         }
         return YamlConfiguration.loadConfiguration(yamlFile);
     }
+
+    public static void saveYamlToFile(String fileName, YamlConfiguration yaml) throws IOException {
+        File dataFolder = MonetDungeon.plugin.getDataFolder();
+        File yamlFile = new File(dataFolder, fileName + ".yml");
+        yaml.save(yamlFile);
+    }
 }
