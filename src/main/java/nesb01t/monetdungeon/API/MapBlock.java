@@ -1,7 +1,7 @@
 package nesb01t.monetdungeon.API;
 
-import org.bukkit.Location;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 
 public class MapBlock {
     public static int getMapBlockX(LivingEntity entity) {
@@ -16,5 +16,11 @@ public class MapBlock {
         return zBlock;
     }
 
+    public static void logMapBlock(Player player) {
+        int BlockX = MapBlock.getMapBlockX(player);
+        int BlockZ = MapBlock.getMapBlockZ(player);
+        String mapBlockStr = "地图区块: " + String.valueOf(BlockX) + ", " + String.valueOf(BlockZ);
+        player.sendMessage(mapBlockStr);
+    }
 
 }
