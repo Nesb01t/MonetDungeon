@@ -8,18 +8,14 @@ import org.bukkit.event.inventory.InventoryType;
 
 public class PlayerUtils {
     public static Block getBlockUnderPlayer(Player player) {
-        Location playerLoc = player.getLocation();
-        playerLoc.setY(playerLoc.getY() - 0.01D);
-        Block block = playerLoc.getWorld().getBlockAt(playerLoc);
+        Location loc = player.getLocation();
+        loc.setY(loc.getY() - 0.01D);
+        Block block = loc.getWorld().getBlockAt(loc);
         return block;
     }
 
     public static boolean isOnObsidian(Player player) {
-        Location playerLoc = player.getLocation();
-        playerLoc.setY(playerLoc.getY() - 0.01D);
-        Block block = playerLoc.getWorld().getBlockAt(playerLoc);
-        player.sendMessage(block.getType().toString());
-        return block.getType() == Material.OBSIDIAN;
+        return getBlockUnderPlayer(player).getType() == Material.OBSIDIAN;
     }
 
     public static boolean isViewingGUI(Player player) {
