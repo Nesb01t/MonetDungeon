@@ -27,6 +27,8 @@ public class LocationCom implements CommandExecutor {
             return true;
         }
 
+        sender.sendMessage(String.valueOf(args.length));
+
         switch (args[0]) {
             case "save":
                 /**
@@ -43,6 +45,10 @@ public class LocationCom implements CommandExecutor {
                         throw new RuntimeException(e);
                     }
                 }
+                break;
+            default:
+                sender.sendMessage("Error! your argument makes no effect.");
+                break;
         }
         return false;
     }

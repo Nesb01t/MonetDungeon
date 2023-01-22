@@ -4,6 +4,5 @@ main: nesb01t.monetdungeon.MonetDungeon
 api-version: 1.14
 commands:
   modun:
-    permission: MonetDungeon
     aliases:
       - md
