@@ -1,4 +1,4 @@
-package nesb01t.monetdungeon.Utils;
+package nesb01t.monetdungeon.utils;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -16,6 +16,10 @@ public class PlayerUtils {
 
     public static boolean isOnObsidian(Player player) {
         return getBlockUnderPlayer(player).getType() == Material.OBSIDIAN;
+    }
+
+    public static boolean isOnDiorite(Player player) {
+        return getBlockUnderPlayer(player).getType() == Material.POLISHED_DIORITE;
     }
 
     public static boolean isViewingGUI(Player player) {

@@ -1,4 +1,4 @@
-package nesb01t.monetdungeon.Utils;
+package nesb01t.monetdungeon.utils;
 
 import java.util.Random;
 

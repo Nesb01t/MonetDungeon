@@ -1,4 +1,4 @@
-package nesb01t.monetdungeon.API;
+package nesb01t.monetdungeon.api;
 
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

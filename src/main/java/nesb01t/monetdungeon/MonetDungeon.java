@@ -1,7 +1,7 @@
 package nesb01t.monetdungeon;
 
-import nesb01t.monetdungeon.API.LocationCom;
-import nesb01t.monetdungeon.API.PortalListener;
+import nesb01t.monetdungeon.com.LocationCom;
+import nesb01t.monetdungeon.listener.PortalListener;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;

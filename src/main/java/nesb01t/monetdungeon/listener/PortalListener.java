@@ -1,6 +1,7 @@
-package nesb01t.monetdungeon.API;
+package nesb01t.monetdungeon.listener;
 
-import nesb01t.monetdungeon.Utils.PlayerUtils;
+import nesb01t.monetdungeon.api.DungeonPanel;
+import nesb01t.monetdungeon.utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -27,11 +28,11 @@ public class PortalListener implements Listener {
         }
 
         // 黑曜石上
-        if (PlayerUtils.isOnObsidian(player) && !isCooldown(player)) {
+        if (PlayerUtils.isOnObsidian(player)) {
             DungeonPanel.openDungeonPanel(player);
         }
 
-        PortalListener.setCooldown(player, 0.1);
+        setCooldown(player, 0.1);
     }
 
 
