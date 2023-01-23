@@ -15,13 +15,15 @@ public class DungeonPanel {
         // 打开地牢面板
         BukkitScheduler scheduler = Bukkit.getScheduler();
         scheduler.scheduleSyncDelayedTask(plugin, () -> {
-            openPanelInv(player);
+            Inventory panelInv = createPanelInv(player);
+            player.openInventory(panelInv);
         }, 2L);
     }
 
-    private static void openPanelInv(Player player) {
+    private static Inventory createPanelInv(Player player) {
         // 创建 Inv
         Inventory panelInv = Bukkit.createInventory(player, 27);
-        player.openInventory(panelInv);
+
+        return panelInv;
     }
 }

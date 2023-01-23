@@ -40,7 +40,7 @@ public class YamlUtils {
 
     public static int getListSize(String blockX, String level) throws IOException {
         YamlConfiguration yaml = useYamlFile(blockX);
-        ConfigurationSection list = yaml.getConfigurationSection(level);
+        ConfigurationSection list = yaml.getConfigurationSection("level" + level);
         return list.getKeys(false).size();
     }
 }
