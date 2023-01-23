@@ -4,4 +4,5 @@
            extension="java"/>
      <tree path="/src/main/java/nesb01t/monetdungeon/listener/PortalListener.java" title="传送门触发管理"
            extension="java"/>
+     <tree path="/src/main/java/nesb01t/monetdungeon/api/PortalSystem.java" title="！传送机制和奖励" extension="java"/>
  </trees>

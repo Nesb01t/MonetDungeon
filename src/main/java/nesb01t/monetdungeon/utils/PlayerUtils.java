@@ -22,6 +22,10 @@ public class PlayerUtils {
         return getBlockUnderPlayer(player).getType() == Material.POLISHED_DIORITE;
     }
 
+    public static boolean isOnMagma(Player player) {
+        return getBlockUnderPlayer(player).getType() == Material.MAGMA_BLOCK;
+    }
+
     public static boolean isViewingGUI(Player player) {
         return player.getOpenInventory().getType() == InventoryType.CHEST;
     }

@@ -1,6 +1,7 @@
 package nesb01t.monetdungeon.listener;
 
 import nesb01t.monetdungeon.api.DungeonPanel;
+import nesb01t.monetdungeon.api.MapBlock;
 import nesb01t.monetdungeon.utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static nesb01t.monetdungeon.MonetDungeon.plugin;
+import static nesb01t.monetdungeon.api.PortalSystem.*;
 
 public class PortalListener implements Listener {
 
@@ -27,9 +29,19 @@ public class PortalListener implements Listener {
             return;
         }
 
-        // 黑曜石上
+
         if (PlayerUtils.isOnObsidian(player)) {
-            DungeonPanel.openDungeonPanel(player);
+            // 黑曜石 level 1
+            useObsidianPortal(player, MapBlock.getMapBlockX(player));
+
+        } else if (PlayerUtils.isOnDiorite(player)) {
+            // 闪长岩 level 2
+            useDioritePortal(player, MapBlock.getMapBlockX(player));
+
+        } else if (PlayerUtils.isOnMagma(player)) {
+            // 岩浆石 level 3
+            useMagmaPortal(player, MapBlock.getMapBlockX(player));
+
         }
 
         setCooldown(player, 0.1);
