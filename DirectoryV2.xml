@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <trees>
+     <tree path="/src/main/java/nesb01t/monetdungeon/com/LocationCom.java" title="关于传送和位置的指令"
+           extension="java"/>
+     <tree path="/src/main/java/nesb01t/monetdungeon/listener/PortalListener.java" title="传送门触发管理"
+           extension="java"/>
+ </trees>
