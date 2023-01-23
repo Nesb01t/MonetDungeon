@@ -1,7 +1,9 @@
 package nesb01t.monetdungeon.Utils;
 
 import nesb01t.monetdungeon.MonetDungeon;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,18 +11,37 @@ import java.io.IOException;
 public class YamlUtils {
     // 通过文件名获取 YAML
     public static YamlConfiguration useYamlFile(String fileName) throws IOException {
-        File dataFolder = MonetDungeon.plugin.getDataFolder();
-        File yamlFile = new File(dataFolder, fileName + ".yml");
-        if (!yamlFile.exists()) {
-            yamlFile.createNewFile();
+        File folder = MonetDungeon.plugin.getDataFolder();
+        if (!folder.isDirectory()) {
+            folder.mkdir();
         }
-        return YamlConfiguration.loadConfiguration(yamlFile);
+
+        File file = new File(folder, fileName + ".yml");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        return YamlConfiguration.loadConfiguration(file);
     }
 
     // 通过 YAML 保存到文件名
     public static void saveYamlToFile(String fileName, YamlConfiguration yaml) throws IOException {
-        File dataFolder = MonetDungeon.plugin.getDataFolder();
-        File yamlFile = new File(dataFolder, fileName + ".yml");
-        yaml.save(yamlFile);
+        File folder = MonetDungeon.plugin.getDataFolder();
+        if (!folder.isDirectory()) {
+            folder.mkdir();
+        }
+
+        File file = new File(folder, fileName + ".yml");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+
+        yaml.save(file);
+    }
+
+    public static int getListSize(String blockX, String level) throws IOException {
+        YamlConfiguration yaml = useYamlFile(blockX);
+        ConfigurationSection list = yaml.getConfigurationSection(level);
+        return list.getKeys(false).size();
     }
 }
