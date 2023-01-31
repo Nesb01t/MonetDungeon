@@ -6,4 +6,5 @@
            extension="java"/>
      <tree path="/src/main/java/nesb01t/monetdungeon/api/PortalSystem.java" title="！传送机制和奖励" extension="java"/>
      <tree path="/src/main/java/nesb01t/monetdungeon/api/DungeonPanel.java" title="！传送门GUI面板" extension="java"/>
+     <tree path="/src/main/java/nesb01t/monetdungeon/api/DungeonManager.java" title="传送地点可视化" extension="java"/>
  </trees>

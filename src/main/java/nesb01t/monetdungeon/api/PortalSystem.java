@@ -31,7 +31,11 @@ public class PortalSystem {
 
     public static void useMagmaPortal(Player player, int blockX) throws IOException { // level 3
         String level = String.valueOf(3);
-        if (blockX <= 10) {
+        if (blockX == 1) {
+            // 主城面板
+            player.sendMessage("回到小屋...");
+            LocationCom.teleportToFileLoc(player, String.valueOf(blockX), level);
+        } else if (blockX <= 10) {
             // 副本 (最终 & 三层奖励)
             player.sendMessage("打开返程传送门...");
             LocationCom.teleportToFileLoc(player, String.valueOf(blockX), level);

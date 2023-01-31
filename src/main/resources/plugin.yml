@@ -3,6 +3,7 @@ version: '${project.version}'
 main: nesb01t.monetdungeon.MonetDungeon
 api-version: 1.14
 commands:
-  modun:
-    aliases:
-      - md
+  loc:
+    aliases: []
+  dun:
+    aliases: []
