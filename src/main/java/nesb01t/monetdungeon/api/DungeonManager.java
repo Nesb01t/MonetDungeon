@@ -15,7 +15,7 @@ public class DungeonManager {
 
     private static Inventory getManagerInv(Player player) {
         // 创建 Inv
-        Inventory panelInv = Bukkit.createInventory(player, 27);
+        Inventory panelInv = Bukkit.createInventory(player, 54);
 
         return panelInv;
     }

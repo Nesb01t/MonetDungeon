@@ -17,11 +17,6 @@ public class ManagerCom implements CommandExecutor {
             return true;
         }
 
-        if (args.length == 0) { // 参数长度 = 0
-            sender.sendMessage("Error! you did not provide any arguments.");
-            return true;
-        }
-
         if (!sender.isOp()) { // 必须是OP
             sender.sendMessage("Error! you don't have permission.");
             return true;
