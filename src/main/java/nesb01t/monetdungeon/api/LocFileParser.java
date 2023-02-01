@@ -27,27 +27,13 @@ public class LocFileParser {
     }
 
     /**
-     * 传送坐标
-     *
-     * @param player 所在位置
-     * @param blockX 所在地图区块
-     * @param level  层级
-     */
-    public static void teleportToFileLoc(Player player, String blockX, String level) throws IOException {
-        YamlConfiguration yaml = useYamlFile(String.valueOf(blockX));
-        String rand = String.valueOf(MathUtils.getRandomBetween(0, YamlUtils.getListSize(blockX, level) - 1));
-        Location loc = (Location) yaml.getConfigurationSection("level" + level).get(rand);
-        player.teleport(loc);
-    }
-
-    /**
      * 保存坐标
      *
-     * @param player 所在位置
+     * @param location 位置
      * @param blockX 所在地图区块
      * @param level  层级
      */
-    public static void saveLocationToFile(Player player, String blockX, String level) throws IOException {
+    public static void saveLocation(Location location, String blockX, String level) throws IOException {
         YamlConfiguration yaml = useYamlFile(blockX);
         ConfigurationSection list;
 
@@ -59,9 +45,7 @@ public class LocFileParser {
             list = yaml.createSection("level" + level);
         }
 
-        list.set(String.valueOf(list.getKeys(false).size()), player.getLocation());
-
-        player.sendMessage("尝试保存坐标...");
+        list.set(String.valueOf(list.getKeys(false).size()), location);
         saveYamlToFile(blockX, yaml);
     }
 }

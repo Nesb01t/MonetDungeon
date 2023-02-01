@@ -36,7 +36,8 @@ public class LocationCom implements CommandExecutor {
                     sender.sendMessage("Error! usage /md save blockX level.");
                 } else if (args.length == 3) {
                     try {
-                        LocFileParser.saveLocationToFile(((Player) sender).getPlayer(), args[1], args[2]);
+                        sender.sendMessage("正在尝试存储坐标...");
+                        LocFileParser.saveLocation(((Player) sender).getLocation(), args[1], args[2]);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
