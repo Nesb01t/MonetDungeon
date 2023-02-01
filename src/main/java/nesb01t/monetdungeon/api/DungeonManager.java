@@ -4,11 +4,16 @@ import nesb01t.monetdungeon.utils.MathUtils;
 import nesb01t.monetdungeon.utils.YamlUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static nesb01t.monetdungeon.utils.YamlUtils.useYamlFile;
 
@@ -20,25 +25,58 @@ public class DungeonManager {
     }
 
     private static Inventory getManagerInv(Player player, String blockX) throws IOException {
-        // 创建 Inv
-        Inventory panelInv = Bukkit.createInventory(player, 54);
+        // createInv
+        Inventory panelInv = Bukkit.createInventory(player, 27, "地图区块: " + blockX);
         YamlConfiguration yaml = YamlUtils.useYamlFile(String.valueOf(blockX));
-        int size_1 = YamlUtils.getListSize(blockX, "1");
-        player.sendMessage(String.valueOf(size_1));
+
+        // appendItems
+        for (int i = 1; i <= 3; i++) { // level
+            String level = String.valueOf(i);
+            int size = YamlUtils.getListSize(blockX, level);
+
+            for (int j = 0; j < size; j++) { // index
+                String index = String.valueOf(j);
+                int chestIndex = (i - 1) * 9 + j;
+
+                Location loc = LocFileParser.getLocation(blockX, level, index); // 获取坐标
+                ItemStack itemStack = generateLocItem(loc, level);
+                panelInv.setItem(chestIndex, itemStack);
+            }
+        }
+
 
         return panelInv;
     }
 
-    /**
-     * 获取坐标
-     *
-     * @param blockX 所在地图区块
-     * @param level  层级
-     */
-    public static Location getLocation(String blockX, String level) throws IOException {
-        YamlConfiguration yaml = useYamlFile(String.valueOf(blockX)); // 读取 blockX -> 1.yml
-        String rand = String.valueOf(MathUtils.getRandomBetween(0, YamlUtils.getListSize(blockX, level) - 1));
-        Location loc = (Location) yaml.getConfigurationSection("level" + level).get(rand);
-        return loc;
+    private static ItemStack generateLocItem(Location location, String level) {
+        // getMaterial
+        Material material = Material.GRASS_BLOCK;
+        switch (level) {
+            case "1":
+                material = Material.OBSIDIAN;
+                break;
+            case "2":
+                material = Material.DIORITE;
+                break;
+            case "3":
+                material = Material.MAGMA_BLOCK;
+                break;
+        }
+
+        // getItemMeta
+        ItemStack itemStack = new ItemStack(material);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+
+        // setItemMeta
+        itemMeta.setDisplayName("Teleport Here"); // name
+        List<String> lore = new ArrayList<>(); // lore
+        lore.add("地图层级: " + level);
+        lore.add("X坐标: " + location.getX());
+        lore.add("Y坐标: " + location.getY());
+        lore.add("Z坐标: " + location.getZ());
+        itemMeta.setLore(lore);
+        itemStack.setItemMeta(itemMeta);
+
+        return itemStack;
     }
 }

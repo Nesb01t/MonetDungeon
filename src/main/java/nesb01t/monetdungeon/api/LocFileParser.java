@@ -5,7 +5,6 @@ import nesb01t.monetdungeon.utils.YamlUtils;
 import org.bukkit.Location;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
@@ -19,7 +18,19 @@ public class LocFileParser {
      * @param blockX 所在地图区块
      * @param level  层级
      */
-    public static Location getLocation(String blockX, String level) throws IOException {
+    public static Location getLocation(String blockX, String level, String index) throws IOException {
+        YamlConfiguration yaml = useYamlFile(String.valueOf(blockX)); // 读取 blockX -> 1.yml
+        Location loc = (Location) yaml.getConfigurationSection("level" + level).get(index);
+        return loc;
+    }
+
+    /**
+     * 获取随机坐标
+     *
+     * @param blockX 所在地图区块
+     * @param level  层级
+     */
+    public static Location getRandomLocation(String blockX, String level) throws IOException {
         YamlConfiguration yaml = useYamlFile(String.valueOf(blockX)); // 读取 blockX -> 1.yml
         String rand = String.valueOf(MathUtils.getRandomBetween(0, YamlUtils.getListSize(blockX, level) - 1));
         Location loc = (Location) yaml.getConfigurationSection("level" + level).get(rand);
@@ -30,8 +41,8 @@ public class LocFileParser {
      * 保存坐标
      *
      * @param location 位置
-     * @param blockX 所在地图区块
-     * @param level  层级
+     * @param blockX   所在地图区块
+     * @param level    层级
      */
     public static void saveLocation(Location location, String blockX, String level) throws IOException {
         YamlConfiguration yaml = useYamlFile(blockX);

@@ -2,6 +2,7 @@ package nesb01t.monetdungeon;
 
 import nesb01t.monetdungeon.com.LocationCom;
 import nesb01t.monetdungeon.com.ManagerCom;
+import nesb01t.monetdungeon.listener.ManagerListener;
 import nesb01t.monetdungeon.listener.PortalListener;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
@@ -16,6 +17,7 @@ public final class MonetDungeon extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         easyRegEvent(new PortalListener());
+        easyRegEvent(new ManagerListener());
         easyRegCom(new LocationCom(), "loc");
         easyRegCom(new ManagerCom(), "dun");
     }
