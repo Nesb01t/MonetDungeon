@@ -1,5 +1,6 @@
 package nesb01t.monetdungeon.api;
 
+import nesb01t.monetdungeon.utils.MsgUtils;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
@@ -13,12 +14,12 @@ public class PortalSystem {
         String block = String.valueOf(blockX);
         if (blockX == 1) {
             // 主城的黑曜石门 -> 打开面板
-            player.sendMessage("进入传送门...");
+            MsgUtils.Send(player, "&c系统提示", "进入传送门...");
             DungeonPanel.openDungeonPanel(player);
             player.teleport(LocFileParser.getRandomLocation(block, level));
         } else if (blockX <= 10) {
             // 副本 (第一层到第二层的奖励)
-            player.sendMessage("魔法将你传送到了另一个区域...");
+            MsgUtils.Send(player, "&c系统提示", "魔法将你传送到了下一层...");
             player.teleport(LocFileParser.getRandomLocation(block, level));
         }
     }
@@ -30,7 +31,7 @@ public class PortalSystem {
         String block = String.valueOf(blockX);
         if (blockX <= 10) {
             // 副本 (第二层到第三层的奖励)
-            player.sendMessage("你感到这里充满了危险...");
+            MsgUtils.Send(player, "&c系统提示", "进入最深处, 胁迫正在接近...");
             player.teleport(LocFileParser.getRandomLocation(block, level));
         }
     }
@@ -42,11 +43,11 @@ public class PortalSystem {
         String block = String.valueOf(blockX);
         if (blockX == 1) {
             // 主城的岩浆石门 -> 回到小屋
-            player.sendMessage("回到小屋...");
+            MsgUtils.Send(player, "&c系统提示", "回到了小屋...");
             player.teleport(LocFileParser.getRandomLocation(block, level));
         } else if (blockX <= 10) {
             // 副本 (最终 & 第三层的奖励)
-            player.sendMessage("打开返程传送门...");
+            MsgUtils.Send(player, "&c系统提示", "进入了返程传送门...");
             player.teleport(LocFileParser.getRandomLocation(block, level));
         }
     }
