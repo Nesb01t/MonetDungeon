@@ -1,6 +1,5 @@
 package nesb01t.monetdungeon.listener;
 
-import nesb01t.monetdungeon.api.DungeonPanel;
 import nesb01t.monetdungeon.api.MapBlock;
 import nesb01t.monetdungeon.utils.PlayerUtils;
 import org.bukkit.Bukkit;

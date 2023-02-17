@@ -1,6 +1,5 @@
 package nesb01t.monetdungeon.api;
 
-import nesb01t.monetdungeon.utils.MathUtils;
 import nesb01t.monetdungeon.utils.YamlUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -14,8 +13,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static nesb01t.monetdungeon.utils.YamlUtils.useYamlFile;
 
 public class DungeonManager {
     public static void openDungeonManager(Player player, String blockX) throws IOException {
