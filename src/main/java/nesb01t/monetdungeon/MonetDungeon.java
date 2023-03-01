@@ -10,11 +10,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class MonetDungeon extends JavaPlugin {
-
     public static JavaPlugin plugin;
 
     @Override
     public void onEnable() {
+        // 注册事件
         plugin = this;
         easyRegEvent(new PortalListener());
         easyRegEvent(new ManagerListener());

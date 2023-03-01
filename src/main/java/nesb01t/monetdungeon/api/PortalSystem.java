@@ -5,7 +5,6 @@ import org.bukkit.entity.Player;
 
 import java.io.IOException;
 
-
 public class PortalSystem {
     // 黑曜石门，放置在第一层，传送到第二层
     public static void useObsidianPortal(Player player, int blockX) throws IOException {

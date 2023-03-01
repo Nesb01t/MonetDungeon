@@ -21,6 +21,7 @@ public class DungeonManager {
         player.openInventory(panelInv);
     }
 
+
     private static Inventory getManagerInv(Player player, String blockX) throws IOException {
         // createInv
         Inventory panelInv = Bukkit.createInventory(player, 27, "地图区块: " + blockX);
